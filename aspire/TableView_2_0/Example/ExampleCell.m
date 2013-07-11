@@ -30,7 +30,7 @@
 
 +(CGSize)cellSize
 {
-    return CGSizeMake(160,25);
+    return CGSizeMake(230,45);
 }
 
 @end

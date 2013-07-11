@@ -138,17 +138,29 @@
 		E71EF58C177C71A700877FF4 /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = E71EF58B177C71A700877FF4 /* vec4.c */; };
 		E71EF591177C71A700877FF4 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E71EF590177C71A700877FF4 /* main.m */; };
 		E71EF594177C71A700877FF4 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E71EF593177C71A700877FF4 /* AppDelegate.m */; };
-		E71EF597177C71A700877FF4 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E71EF596177C71A700877FF4 /* HelloWorldLayer.m */; };
-		E71EF59A177C71A700877FF4 /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E71EF599177C71A700877FF4 /* IntroLayer.m */; };
 		E71EF5AD177C739C00877FF4 /* SWScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = E71EF5A1177C739C00877FF4 /* SWScrollView.m */; };
 		E71EF5AE177C739C00877FF4 /* SWSorting.m in Sources */ = {isa = PBXBuildFile; fileRef = E71EF5A4177C739C00877FF4 /* SWSorting.m */; };
 		E71EF5AF177C739C00877FF4 /* SWTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E71EF5A7177C739C00877FF4 /* SWTableView.m */; };
 		E71EF5B0177C739C00877FF4 /* SWMultiColumnTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = E71EF5A8177C739C00877FF4 /* SWMultiColumnTableView.m */; };
 		E71EF5B1177C739C00877FF4 /* SWTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E71EF5AA177C739C00877FF4 /* SWTableViewCell.m */; };
 		E71EF5B2177C739C00877FF4 /* SWTableViewSpriteCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E71EF5AB177C739C00877FF4 /* SWTableViewSpriteCell.m */; };
-		E71EF5BA177C73B300877FF4 /* ExampleTableScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E71EF5B4177C73B300877FF4 /* ExampleTableScene.m */; };
+		E71EF5BA177C73B300877FF4 /* CountyScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E71EF5B4177C73B300877FF4 /* CountyScene.m */; };
 		E71EF5BB177C73B300877FF4 /* ExampleTable.m in Sources */ = {isa = PBXBuildFile; fileRef = E71EF5B5177C73B300877FF4 /* ExampleTable.m */; };
 		E71EF5BC177C73B300877FF4 /* ExampleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E71EF5B8177C73B300877FF4 /* ExampleCell.m */; };
+		E7A2F012178F03D500DF4BA3 /* county_menu_bg-hd.pvr.gz in Resources */ = {isa = PBXBuildFile; fileRef = E7A2F011178F03D500DF4BA3 /* county_menu_bg-hd.pvr.gz */; };
+		E7A2F014178F073100DF4BA3 /* county_menu_bg.pvr.gz in Resources */ = {isa = PBXBuildFile; fileRef = E7A2F013178F073100DF4BA3 /* county_menu_bg.pvr.gz */; };
+		E7A2F01C178F192400DF4BA3 /* county-menu-24-hd.fnt in Resources */ = {isa = PBXBuildFile; fileRef = E7A2F016178F192300DF4BA3 /* county-menu-24-hd.fnt */; };
+		E7A2F01D178F192400DF4BA3 /* county-menu-24-hd.png in Resources */ = {isa = PBXBuildFile; fileRef = E7A2F017178F192300DF4BA3 /* county-menu-24-hd.png */; };
+		E7A2F01E178F192400DF4BA3 /* county-menu-24-ipadhd.fnt in Resources */ = {isa = PBXBuildFile; fileRef = E7A2F018178F192300DF4BA3 /* county-menu-24-ipadhd.fnt */; };
+		E7A2F01F178F192400DF4BA3 /* county-menu-24-ipadhd.png in Resources */ = {isa = PBXBuildFile; fileRef = E7A2F019178F192300DF4BA3 /* county-menu-24-ipadhd.png */; };
+		E7A2F020178F192400DF4BA3 /* county-menu-24.fnt in Resources */ = {isa = PBXBuildFile; fileRef = E7A2F01A178F192300DF4BA3 /* county-menu-24.fnt */; };
+		E7A2F021178F192400DF4BA3 /* county-menu-24.png in Resources */ = {isa = PBXBuildFile; fileRef = E7A2F01B178F192400DF4BA3 /* county-menu-24.png */; };
+		E7A2F024178F1D6500DF4BA3 /* county_menu_cellbg-hd.pvr.gz in Resources */ = {isa = PBXBuildFile; fileRef = E7A2F022178F1D6500DF4BA3 /* county_menu_cellbg-hd.pvr.gz */; };
+		E7A2F025178F1D6500DF4BA3 /* county_menu_cellbg.pvr.gz in Resources */ = {isa = PBXBuildFile; fileRef = E7A2F023178F1D6500DF4BA3 /* county_menu_cellbg.pvr.gz */; };
+		E7A2F028178F29AD00DF4BA3 /* home_button-hd.pvr.gz in Resources */ = {isa = PBXBuildFile; fileRef = E7A2F026178F29AD00DF4BA3 /* home_button-hd.pvr.gz */; };
+		E7A2F029178F29AD00DF4BA3 /* home_button.pvr.gz in Resources */ = {isa = PBXBuildFile; fileRef = E7A2F027178F29AD00DF4BA3 /* home_button.pvr.gz */; };
+		E7A2F02C178F2A2800DF4BA3 /* click2.caf in Resources */ = {isa = PBXBuildFile; fileRef = E7A2F02B178F2A2800DF4BA3 /* click2.caf */; };
+		E7A2F02F178F38C800DF4BA3 /* iphoneIntroNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E7A2F02E178F38C700DF4BA3 /* iphoneIntroNode.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -427,10 +439,6 @@
 		E71EF590177C71A700877FF4 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E71EF592177C71A700877FF4 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E71EF593177C71A700877FF4 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E71EF595177C71A700877FF4 /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		E71EF596177C71A700877FF4 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
-		E71EF598177C71A700877FF4 /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
-		E71EF599177C71A700877FF4 /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		E71EF5A1177C739C00877FF4 /* SWScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWScrollView.m; path = TableView_2_0/SWScrollView.m; sourceTree = "<group>"; };
 		E71EF5A2177C739C00877FF4 /* SWTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWTableViewCell.h; path = TableView_2_0/SWTableViewCell.h; sourceTree = "<group>"; };
 		E71EF5A3177C739C00877FF4 /* SWScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWScrollView.h; path = TableView_2_0/SWScrollView.h; sourceTree = "<group>"; };
@@ -443,12 +451,27 @@
 		E71EF5AA177C739C00877FF4 /* SWTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWTableViewCell.m; path = TableView_2_0/SWTableViewCell.m; sourceTree = "<group>"; };
 		E71EF5AB177C739C00877FF4 /* SWTableViewSpriteCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SWTableViewSpriteCell.m; path = TableView_2_0/SWTableViewSpriteCell.m; sourceTree = "<group>"; };
 		E71EF5AC177C739C00877FF4 /* SWMultiColumnTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SWMultiColumnTableView.h; path = TableView_2_0/SWMultiColumnTableView.h; sourceTree = "<group>"; };
-		E71EF5B4177C73B300877FF4 /* ExampleTableScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExampleTableScene.m; path = TableView_2_0/Example/ExampleTableScene.m; sourceTree = "<group>"; };
+		E71EF5B4177C73B300877FF4 /* CountyScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CountyScene.m; path = TableView_2_0/Example/CountyScene.m; sourceTree = "<group>"; };
 		E71EF5B5177C73B300877FF4 /* ExampleTable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExampleTable.m; path = TableView_2_0/Example/ExampleTable.m; sourceTree = "<group>"; };
-		E71EF5B6177C73B300877FF4 /* ExampleTableScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExampleTableScene.h; path = TableView_2_0/Example/ExampleTableScene.h; sourceTree = "<group>"; };
+		E71EF5B6177C73B300877FF4 /* CountyScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CountyScene.h; path = TableView_2_0/Example/CountyScene.h; sourceTree = "<group>"; };
 		E71EF5B7177C73B300877FF4 /* ExampleTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExampleTable.h; path = TableView_2_0/Example/ExampleTable.h; sourceTree = "<group>"; };
 		E71EF5B8177C73B300877FF4 /* ExampleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExampleCell.m; path = TableView_2_0/Example/ExampleCell.m; sourceTree = "<group>"; };
 		E71EF5B9177C73B300877FF4 /* ExampleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExampleCell.h; path = TableView_2_0/Example/ExampleCell.h; sourceTree = "<group>"; };
+		E7A2F011178F03D500DF4BA3 /* county_menu_bg-hd.pvr.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; name = "county_menu_bg-hd.pvr.gz"; path = "images/county_menu_bg-hd.pvr.gz"; sourceTree = SOURCE_ROOT; };
+		E7A2F013178F073100DF4BA3 /* county_menu_bg.pvr.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; name = county_menu_bg.pvr.gz; path = images/county_menu_bg.pvr.gz; sourceTree = SOURCE_ROOT; };
+		E7A2F016178F192300DF4BA3 /* county-menu-24-hd.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "county-menu-24-hd.fnt"; path = "fonts/county-menu-24-hd.fnt"; sourceTree = SOURCE_ROOT; };
+		E7A2F017178F192300DF4BA3 /* county-menu-24-hd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "county-menu-24-hd.png"; path = "fonts/county-menu-24-hd.png"; sourceTree = SOURCE_ROOT; };
+		E7A2F018178F192300DF4BA3 /* county-menu-24-ipadhd.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "county-menu-24-ipadhd.fnt"; path = "fonts/county-menu-24-ipadhd.fnt"; sourceTree = SOURCE_ROOT; };
+		E7A2F019178F192300DF4BA3 /* county-menu-24-ipadhd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "county-menu-24-ipadhd.png"; path = "fonts/county-menu-24-ipadhd.png"; sourceTree = SOURCE_ROOT; };
+		E7A2F01A178F192300DF4BA3 /* county-menu-24.fnt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = "county-menu-24.fnt"; path = "fonts/county-menu-24.fnt"; sourceTree = SOURCE_ROOT; };
+		E7A2F01B178F192400DF4BA3 /* county-menu-24.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "county-menu-24.png"; path = "fonts/county-menu-24.png"; sourceTree = SOURCE_ROOT; };
+		E7A2F022178F1D6500DF4BA3 /* county_menu_cellbg-hd.pvr.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; name = "county_menu_cellbg-hd.pvr.gz"; path = "images/county_menu_cellbg-hd.pvr.gz"; sourceTree = SOURCE_ROOT; };
+		E7A2F023178F1D6500DF4BA3 /* county_menu_cellbg.pvr.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; name = county_menu_cellbg.pvr.gz; path = images/county_menu_cellbg.pvr.gz; sourceTree = SOURCE_ROOT; };
+		E7A2F026178F29AD00DF4BA3 /* home_button-hd.pvr.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; name = "home_button-hd.pvr.gz"; path = "images/home_button-hd.pvr.gz"; sourceTree = SOURCE_ROOT; };
+		E7A2F027178F29AD00DF4BA3 /* home_button.pvr.gz */ = {isa = PBXFileReference; lastKnownFileType = archive.gzip; name = home_button.pvr.gz; path = images/home_button.pvr.gz; sourceTree = SOURCE_ROOT; };
+		E7A2F02B178F2A2800DF4BA3 /* click2.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = click2.caf; path = sounds/click2.caf; sourceTree = SOURCE_ROOT; };
+		E7A2F02D178F38C700DF4BA3 /* iphoneIntroNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iphoneIntroNode.h; sourceTree = "<group>"; };
+		E7A2F02E178F38C700DF4BA3 /* iphoneIntroNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = iphoneIntroNode.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -509,13 +532,13 @@
 		E71EF404177C71A500877FF4 /* aspire */ = {
 			isa = PBXGroup;
 			children = (
-				E71EF5A0177C738E00877FF4 /* tableview */,
 				E71EF592177C71A700877FF4 /* AppDelegate.h */,
 				E71EF593177C71A700877FF4 /* AppDelegate.m */,
-				E71EF595177C71A700877FF4 /* HelloWorldLayer.h */,
-				E71EF596177C71A700877FF4 /* HelloWorldLayer.m */,
-				E71EF598177C71A700877FF4 /* IntroLayer.h */,
-				E71EF599177C71A700877FF4 /* IntroLayer.m */,
+				E7A2F02D178F38C700DF4BA3 /* iphoneIntroNode.h */,
+				E7A2F02E178F38C700DF4BA3 /* iphoneIntroNode.m */,
+				E71EF5B6177C73B300877FF4 /* CountyScene.h */,
+				E71EF5B4177C73B300877FF4 /* CountyScene.m */,
+				E71EF5A0177C738E00877FF4 /* tableview */,
 				E71EF405177C71A500877FF4 /* Resources */,
 				E71EF41D177C71A500877FF4 /* libs */,
 				E71EF58E177C71A700877FF4 /* Supporting Files */,
@@ -526,6 +549,9 @@
 		E71EF405177C71A500877FF4 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E7A2F02A178F2A0A00DF4BA3 /* sounds */,
+				E7A2F015178F191700DF4BA3 /* fonts */,
+				E7A2F010178F03C900DF4BA3 /* images */,
 				E71EF406177C71A500877FF4 /* Default.png */,
 				E71EF408177C71A500877FF4 /* Default@2x.png */,
 				E71EF40A177C71A500877FF4 /* Default-568h@2x.png */,
@@ -905,8 +931,6 @@
 		E71EF5A0177C738E00877FF4 /* tableview */ = {
 			isa = PBXGroup;
 			children = (
-				E71EF5B6177C73B300877FF4 /* ExampleTableScene.h */,
-				E71EF5B4177C73B300877FF4 /* ExampleTableScene.m */,
 				E71EF5B7177C73B300877FF4 /* ExampleTable.h */,
 				E71EF5B5177C73B300877FF4 /* ExampleTable.m */,
 				E71EF5B9177C73B300877FF4 /* ExampleCell.h */,
@@ -919,20 +943,54 @@
 		E71EF5B3177C739F00877FF4 /* support files */ = {
 			isa = PBXGroup;
 			children = (
-				E71EF5A1177C739C00877FF4 /* SWScrollView.m */,
 				E71EF5A2177C739C00877FF4 /* SWTableViewCell.h */,
+				E71EF5AA177C739C00877FF4 /* SWTableViewCell.m */,
+				E71EF5A1177C739C00877FF4 /* SWScrollView.m */,
 				E71EF5A3177C739C00877FF4 /* SWScrollView.h */,
+				E71EF5A7177C739C00877FF4 /* SWTableView.m */,
 				E71EF5A4177C739C00877FF4 /* SWSorting.m */,
 				E71EF5A5177C739C00877FF4 /* SWSorting.h */,
 				E71EF5A6177C739C00877FF4 /* SWTableViewSpriteCell.h */,
-				E71EF5A7177C739C00877FF4 /* SWTableView.m */,
+				E71EF5AB177C739C00877FF4 /* SWTableViewSpriteCell.m */,
 				E71EF5A8177C739C00877FF4 /* SWMultiColumnTableView.m */,
 				E71EF5A9177C739C00877FF4 /* SWTableView.h */,
-				E71EF5AA177C739C00877FF4 /* SWTableViewCell.m */,
-				E71EF5AB177C739C00877FF4 /* SWTableViewSpriteCell.m */,
 				E71EF5AC177C739C00877FF4 /* SWMultiColumnTableView.h */,
 			);
 			name = "support files";
+			sourceTree = "<group>";
+		};
+		E7A2F010178F03C900DF4BA3 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				E7A2F026178F29AD00DF4BA3 /* home_button-hd.pvr.gz */,
+				E7A2F027178F29AD00DF4BA3 /* home_button.pvr.gz */,
+				E7A2F022178F1D6500DF4BA3 /* county_menu_cellbg-hd.pvr.gz */,
+				E7A2F023178F1D6500DF4BA3 /* county_menu_cellbg.pvr.gz */,
+				E7A2F013178F073100DF4BA3 /* county_menu_bg.pvr.gz */,
+				E7A2F011178F03D500DF4BA3 /* county_menu_bg-hd.pvr.gz */,
+			);
+			name = images;
+			sourceTree = "<group>";
+		};
+		E7A2F015178F191700DF4BA3 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E7A2F016178F192300DF4BA3 /* county-menu-24-hd.fnt */,
+				E7A2F017178F192300DF4BA3 /* county-menu-24-hd.png */,
+				E7A2F018178F192300DF4BA3 /* county-menu-24-ipadhd.fnt */,
+				E7A2F019178F192300DF4BA3 /* county-menu-24-ipadhd.png */,
+				E7A2F01A178F192300DF4BA3 /* county-menu-24.fnt */,
+				E7A2F01B178F192400DF4BA3 /* county-menu-24.png */,
+			);
+			name = fonts;
+			sourceTree = "<group>";
+		};
+		E7A2F02A178F2A0A00DF4BA3 /* sounds */ = {
+			isa = PBXGroup;
+			children = (
+				E7A2F02B178F2A2800DF4BA3 /* click2.caf */,
+			);
+			name = sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -998,6 +1056,19 @@
 				E71EF419177C71A500877FF4 /* Icon@2x.png in Resources */,
 				E71EF41C177C71A500877FF4 /* iTunesArtwork in Resources */,
 				E71EF572177C71A700877FF4 /* ChangeLog in Resources */,
+				E7A2F012178F03D500DF4BA3 /* county_menu_bg-hd.pvr.gz in Resources */,
+				E7A2F014178F073100DF4BA3 /* county_menu_bg.pvr.gz in Resources */,
+				E7A2F01C178F192400DF4BA3 /* county-menu-24-hd.fnt in Resources */,
+				E7A2F01D178F192400DF4BA3 /* county-menu-24-hd.png in Resources */,
+				E7A2F01E178F192400DF4BA3 /* county-menu-24-ipadhd.fnt in Resources */,
+				E7A2F01F178F192400DF4BA3 /* county-menu-24-ipadhd.png in Resources */,
+				E7A2F020178F192400DF4BA3 /* county-menu-24.fnt in Resources */,
+				E7A2F021178F192400DF4BA3 /* county-menu-24.png in Resources */,
+				E7A2F024178F1D6500DF4BA3 /* county_menu_cellbg-hd.pvr.gz in Resources */,
+				E7A2F025178F1D6500DF4BA3 /* county_menu_cellbg.pvr.gz in Resources */,
+				E7A2F028178F29AD00DF4BA3 /* home_button-hd.pvr.gz in Resources */,
+				E7A2F029178F29AD00DF4BA3 /* home_button.pvr.gz in Resources */,
+				E7A2F02C178F2A2800DF4BA3 /* click2.caf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1117,17 +1188,16 @@
 				E71EF58C177C71A700877FF4 /* vec4.c in Sources */,
 				E71EF591177C71A700877FF4 /* main.m in Sources */,
 				E71EF594177C71A700877FF4 /* AppDelegate.m in Sources */,
-				E71EF597177C71A700877FF4 /* HelloWorldLayer.m in Sources */,
-				E71EF59A177C71A700877FF4 /* IntroLayer.m in Sources */,
 				E71EF5AD177C739C00877FF4 /* SWScrollView.m in Sources */,
 				E71EF5AE177C739C00877FF4 /* SWSorting.m in Sources */,
 				E71EF5AF177C739C00877FF4 /* SWTableView.m in Sources */,
 				E71EF5B0177C739C00877FF4 /* SWMultiColumnTableView.m in Sources */,
 				E71EF5B1177C739C00877FF4 /* SWTableViewCell.m in Sources */,
 				E71EF5B2177C739C00877FF4 /* SWTableViewSpriteCell.m in Sources */,
-				E71EF5BA177C73B300877FF4 /* ExampleTableScene.m in Sources */,
+				E71EF5BA177C73B300877FF4 /* CountyScene.m in Sources */,
 				E71EF5BB177C73B300877FF4 /* ExampleTable.m in Sources */,
 				E71EF5BC177C73B300877FF4 /* ExampleCell.m in Sources */,
+				E7A2F02F178F38C800DF4BA3 /* iphoneIntroNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1149,7 +1219,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1168,7 +1238,7 @@
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1184,6 +1254,7 @@
 				GCC_PREFIX_HEADER = aspire/Prefix.pch;
 				HEADER_SEARCH_PATHS = "\"aspire/libs/kazmath/include\"";
 				INFOPLIST_FILE = aspire/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3",
@@ -1203,6 +1274,7 @@
 				GCC_PREFIX_HEADER = aspire/Prefix.pch;
 				HEADER_SEARCH_PATHS = "\"aspire/libs/kazmath/include\"";
 				INFOPLIST_FILE = aspire/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_LDFLAGS = (
 					"-lz",
 					"-lsqlite3",

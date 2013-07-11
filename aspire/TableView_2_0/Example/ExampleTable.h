@@ -27,7 +27,7 @@
 #import "cocos2d.h"
 #import "SWTableView.h"
 
-@interface ExampleTable : NSObject<SWTableViewDelegate, SWTableViewDataSource>
+@interface ExampleTable : NSObject<SWTableViewDataSource>
 {
 }
 

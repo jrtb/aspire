@@ -1,5 +1,5 @@
 //
-//  ExampleTableScene.h
+//  CountyScene.h
 //
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -26,14 +26,14 @@
 #import <Foundation/Foundation.h>
 #import "cocos2d.h"
 #import "ExampleTable.h"
-#import "SWMultiColumnTableView.h"
+#import "SWTableView.h"
 
-@interface ExampleTableScene : CCLayer
+@interface CountyScene : CCLayer <SWTableViewDelegate>
 {
 @private
     SWTableView *myTable;
-    SWMultiColumnTableView *myMultiTable;
     ExampleTable *exampleTable;
+    SWTableViewCell *cellTouched;
 }
 
 +(id)scene;

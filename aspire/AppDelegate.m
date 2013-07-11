@@ -10,7 +10,10 @@
 
 #import "AppDelegate.h"
 #import "IntroLayer.h"
-#import "ExampleTableScene.h"
+#import "CountyScene.h"
+#import "SimpleAudioEngine.h"
+
+#import "iphoneIntroNode.h"
 
 @implementation MyNavigationController
 
@@ -21,10 +24,10 @@
 	
 	// iPhone only
 	if( [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone )
-		return UIInterfaceOrientationMaskLandscape;
+		return UIInterfaceOrientationMaskPortrait;
 	
 	// iPad only
-	return UIInterfaceOrientationMaskLandscape;
+	return UIInterfaceOrientationMaskPortrait;
 }
 
 // Supported orientations. Customize it for your own needs
@@ -33,11 +36,11 @@
 {
 	// iPhone only
 	if( [[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone )
-		return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+		return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 	
 	// iPad only
 	// iPhone only
-	return UIInterfaceOrientationIsLandscape(interfaceOrientation);
+	return UIInterfaceOrientationIsPortrait(interfaceOrientation);
 }
 
 // This is needed for iOS4 and iOS5 in order to ensure
@@ -48,7 +51,8 @@
 	if(director.runningScene == nil) {
 		// Add the first scene to the stack. The director will draw it immediately into the framebuffer. (Animation is started automatically when the view is displayed.)
 		// and add the scene to the stack. The director will run it when it automatically when the view is displayed.
-		[director runWithScene: [ExampleTableScene scene]];
+		[director runWithScene: [iphoneIntroNode scene]];
+
 	}
 }
 @end
@@ -56,14 +60,55 @@
 
 @implementation AppController
 
+@synthesize screenToggle, deviceMode, deviceLevel, isRetina, muted, nextScreen, selectedCounty;
+
 @synthesize window=window_, navController=navController_, director=director_;
+
+-(void) replaceTheScene
+{
+    
+    if (deviceMode == IPAD) {
+        
+    } else {
+        
+        switch (screenToggle) {
+            case INTRO:
+                [[CCDirector sharedDirector] replaceScene: [iphoneIntroNode scene]];
+                break;
+            case MENU:
+                //[[CCDirector sharedDirector] replaceScene: [iphoneMenuScene scene]];
+                break;
+            case COUNTY:
+                [[CCDirector sharedDirector] replaceScene: [CountyScene scene]];
+                break;
+        }
+
+    }
+    
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
 	// Create the main window
 	window_ = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
 	
+#if __IPHONE_OS_VERSION_MAX_ALLOWED >= 30200
 	
+	if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+	{
+		NSLog(@"iPad Idiom");
+		deviceMode = IPAD;
+	}
+	else
+		
+#endif
+		
+	{
+		NSLog(@"iPhone Idiom");
+		deviceMode = IPHONE;
+		
+	}
+
 	// CCGLView creation
 	// viewWithFrame: size of the OpenGL view. For full screen use [_window bounds]
 	//  - Possible values: any CGRect
@@ -90,7 +135,7 @@
 	director_.wantsFullScreenLayout = YES;
 	
 	// Display FSP and SPF
-	[director_ setDisplayStats:YES];
+	//[director_ setDisplayStats:YES];
 	
 	// set FPS at 60
 	[director_ setAnimationInterval:1.0/60];
@@ -103,8 +148,12 @@
 	//	[director setProjection:kCCDirectorProjection3D];
 	
 	// Enables High Res mode (Retina Display) on iPhone 4 and maintains low res on all other devices
-	if( ! [director_ enableRetinaDisplay:YES] )
+	if( ! [director_ enableRetinaDisplay:YES] ) {
 		CCLOG(@"Retina Display Not supported");
+        isRetina = NO;
+    } else {
+        isRetina = YES;
+    }
 	
 	// Default texture format for PNG/BMP/TIFF/JPEG/GIF images
 	// It can be RGBA8888, RGBA4444, RGB5_A1, RGB565
@@ -137,6 +186,8 @@
 	// make main window visible
 	[window_ makeKeyAndVisible];
 	
+    [[SimpleAudioEngine sharedEngine] preloadEffect:@"click2.caf"];
+    
 	return YES;
 }
 
