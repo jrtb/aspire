@@ -23,17 +23,17 @@
 //  Created by Martin Rehder on 06.05.13.
 //
 
-#import <Foundation/Foundation.h>
 #import "cocos2d.h"
-#import "ExampleTable.h"
-#import "SWTableView.h"
 
-@interface CountyScene : CCLayer <SWTableViewDelegate>
+@interface CountyScene : CCLayer
 {
-@private
-    SWTableView *myTable;
-    ExampleTable *exampleTable;
-    SWTableViewCell *cellTouched;
+    CCLayer                     *scrollLayer;
+	BOOL                        isDragging;
+	float                       lasty;
+	float                       yvel;
+	int                         contentHeight;
+    BOOL                        dragged;
+
 }
 
 +(id)scene;

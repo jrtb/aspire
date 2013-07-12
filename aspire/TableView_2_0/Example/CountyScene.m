@@ -27,7 +27,6 @@
 
 #import "CountyScene.h"
 #import "SimpleAudioEngine.h"
-#import "SWTableViewCell.h"
 #import "AppDelegate.h"
 
 @implementation CountyScene
@@ -52,19 +51,135 @@
         CCSprite *mainBack = [CCSprite spriteWithFile:@"county_menu_bg.pvr.gz"];
         mainBack.anchorPoint = ccp(0.5,1.0);
         mainBack.position = ccp(size.width*.5,size.height);
-        [self addChild:mainBack z:0];
+        [self addChild:mainBack z:2];
 
-        exampleTable = [[ExampleTable alloc] init];
+        CCSprite *mainBack2 = [CCSprite spriteWithFile:@"county_menu_bg_back.pvr.gz"];
+        mainBack2.anchorPoint = ccp(0.5,1.0);
+        mainBack2.position = ccp(size.width*.5,size.height);
+        [self addChild:mainBack2 z:0];
 
-        CGSize tSize = CGSizeMake(230, 230);
-        myTable = [SWTableView viewWithDataSource:exampleTable size:tSize];
-        myTable.position = ccp(45, 45);
-        //myTable.delegate = self; //set if you need touch detection on cells.
-        myTable.verticalFillOrder = SWTableViewFillTopDown;
-        myTable.direction = SWScrollViewDirectionVertical;
-        [myTable reloadData];
-        [self addChild:myTable];
-                
+        // set up the scrolling layer
+        isDragging = NO;
+        lasty = 0.0f;
+        yvel = 0.0f;
+        contentHeight = 45*29-230; // whatever you want here for total height
+        // main scrolling layer
+        scrollLayer = [[CCLayer alloc] init];
+        scrollLayer.position = ccp(0.0,0.0);
+        [self addChild:scrollLayer z:1 tag:0];
+        
+        // create buttons
+        
+        float scrollTop = 272;
+        
+        for (int i=0; i < 29; i++) {
+        
+            CCSprite *buttonBack = [CCSprite spriteWithFile:@"county_menu_cellbg.pvr.gz"];
+            buttonBack.anchorPoint = ccp(0.5,0.5);
+            buttonBack.position = ccp(size.width*.5,scrollTop-buttonBack.contentSize.height*i-buttonBack.contentSize.height*.5);
+            [scrollLayer addChild:buttonBack z:0];
+            
+            NSString *cellString;// = [NSString stringWithFormat:@"Cell %d", idx];
+            
+            switch (i) {
+                case 0:
+                    cellString = @"Alexander";
+                    break;
+                case 1:
+                    cellString = @"Ashe";
+                    break;
+                case 2:
+                    cellString = @"Burke";
+                    break;
+                case 3:
+                    cellString = @"Catawba";
+                    break;
+                case 4:
+                    cellString = @"Camden";
+                    break;
+                case 5:
+                    cellString = @"Cherokee";
+                    break;
+                case 6:
+                    cellString = @"Chowan";
+                    break;
+                case 7:
+                    cellString = @"Davidson";
+                    break;
+                case 8:
+                    cellString = @"Davie";
+                    break;
+                case 9:
+                    cellString = @"Haywood";
+                    break;
+                case 10:
+                    cellString = @"Hertford";
+                    break;
+                case 11:
+                    cellString = @"Johnston";
+                    break;
+                case 12:
+                    cellString = @"Lincoln";
+                    break;
+                case 13:
+                    cellString = @"Madison";
+                    break;
+                case 14:
+                    cellString = @"Mitchell";
+                    break;
+                case 15:
+                    cellString = @"Montgomery";
+                    break;
+                case 16:
+                    cellString = @"Northampton";
+                    break;
+                case 17:
+                    cellString = @"Pasquotank";
+                    break;
+                case 18:
+                    cellString = @"Person";
+                    break;
+                case 19:
+                    cellString = @"Pitt";
+                    break;
+                case 20:
+                    cellString = @"Robeson";
+                    break;
+                case 21:
+                    cellString = @"Rowan";
+                    break;
+                case 22:
+                    cellString = @"Rutherford";
+                    break;
+                case 23:
+                    cellString = @"Sampson";
+                    break;
+                case 24:
+                    cellString = @"Stanly";
+                    break;
+                case 25:
+                    cellString = @"Union";
+                    break;
+                case 26:
+                    cellString = @"Warren";
+                    break;
+                case 27:
+                    cellString = @"Wayne";
+                    break;
+                case 28:
+                    cellString = @"Wilson";
+                    break;
+            }
+            
+            CCLabelBMFont *label = [CCLabelBMFont labelWithString:cellString fntFile:@"county-menu-24.fnt"];
+            label.anchorPoint = ccp(0.5,0.5);
+            label.position = buttonBack.position;
+            label.tag = i;
+            [scrollLayer addChild:label];
+
+        }
+        
+        
         CCSprite *aSmall = [CCSprite spriteWithFile:@"home_button.pvr.gz"];
         aSmall.color = ccGRAY;
         
@@ -77,9 +192,151 @@
         [menuA setPosition:ccp(size.width-29,size.height-28)];
         [self addChild:menuA z:70];
 
+        [self schedule:@selector(moveTick:) interval:0.02f];
+        [self setTouchEnabled:YES];
+
         printf("got here\n");
     }
     return self;
+}
+
+- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    dragged = NO;
+    isDragging = YES;
+    return;
+}
+
+- (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    dragged = YES;
+    
+    UITouch *touch = [touches anyObject];
+    
+    // simple position update
+    CGPoint a = [[CCDirector sharedDirector] convertToGL:[touch previousLocationInView:touch.view]];
+    CGPoint b = [[CCDirector sharedDirector] convertToGL:[touch locationInView:touch.view]];
+    CGPoint nowPosition = scrollLayer.position;
+    nowPosition.y += ( b.y - a.y );
+    //nowPosition.y = MAX( 0, nowPosition.y );
+    //nowPosition.y = MIN( contentHeight + 0, nowPosition.y );
+    scrollLayer.position = nowPosition;
+    
+    return;
+}
+
+- (void) ccTouchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    isDragging = NO;
+    
+    CGPoint pos = scrollLayer.position;
+    
+    if ( pos.y < 0 ) {
+        //printf("1\n");
+        yvel = 0;
+        //pos.y = 0;
+        [scrollLayer runAction:[CCMoveTo actionWithDuration:0.4f position:CGPointMake(scrollLayer.position.x, 0)]];
+    }
+    if ( pos.y > contentHeight) {
+        //printf("2\n");
+        yvel = 0;
+        //pos.y = contentHeight;
+        [scrollLayer runAction:[CCMoveTo actionWithDuration:0.4f position:CGPointMake(scrollLayer.position.x, contentHeight)]];
+    }
+    
+}
+
+- (void) startMovingAgain: (id) sender
+{
+    [self unschedule:@selector(startMovingAgain:)];
+    
+    [self schedule:@selector(moveTick:) interval:0.02f];
+}
+
+- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    isDragging = NO;
+    
+    CGPoint pos = scrollLayer.position;
+    
+    if ( pos.y < 0 ) {
+        //printf("1\n");
+        yvel = 0;
+        //pos.y = 0;
+        [scrollLayer runAction:[CCMoveTo actionWithDuration:0.4f position:CGPointMake(scrollLayer.position.x, 0)]];
+    }
+    if ( pos.y > contentHeight) {
+        //printf("2\n");
+        yvel = 0;
+        //pos.y = contentHeight;
+        [scrollLayer runAction:[CCMoveTo actionWithDuration:0.4f position:CGPointMake(scrollLayer.position.x, contentHeight)]];
+    }
+    
+    //scrollLayer.position = pos;
+    
+    if (!dragged) {
+        UITouch *touch = [touches anyObject];
+        CGPoint point = [touch locationInView: [touch view]];
+        point = [[CCDirector sharedDirector] convertToGL: point];
+        
+        //printf("touch at %f,%f\n",point.x,point.y);
+        
+        point.x -= scrollLayer.position.x;
+        
+        return;
+    }
+}
+
+- (void) moveTick: (ccTime)dt {
+	float friction = 0.95f;
+    
+	if ( !isDragging )
+	{
+        if ( scrollLayer.position.y < 0 ) {
+            //printf("3\n");
+            [self unschedule:@selector(moveTick:)];
+            [scrollLayer stopAllActions];
+            [scrollLayer runAction:[CCMoveTo actionWithDuration:0.3f position:CGPointMake(scrollLayer.position.x, 0)]];
+            [self schedule:@selector(startMovingAgain:) interval:0.3];
+        } else if ( scrollLayer.position.y > contentHeight) {
+            //printf("4\n");
+            [self unschedule:@selector(moveTick:)];
+            [scrollLayer stopAllActions];
+            [scrollLayer runAction:[CCMoveTo actionWithDuration:0.3f position:CGPointMake(scrollLayer.position.x, contentHeight)]];
+            [self schedule:@selector(startMovingAgain:) interval:0.3];
+        } else {
+            
+            //printf("5\n");
+            
+            // inertia
+            yvel *= friction;
+            CGPoint pos = scrollLayer.position;
+            
+            //printf("scrollLayer Y Position: %f\n",pos.y);
+            
+            pos.y += yvel;
+            
+            // *** CHANGE BEHAVIOR HERE *** //
+            // to stop at bounds
+            //pos.y = MAX( 320, pos.y );
+            //pos.y = MIN( contentHeight + 320, pos.y );
+            // to bounce at bounds
+            
+            if ( pos.y < 40 ) { yvel = 0; pos.y = 0; }
+            if ( pos.y > contentHeight + 0 ) { yvel = 0; pos.y = contentHeight + 0; }
+            
+            //if ( pos.y < 0 ) { yvel *= -0.1; pos.y = 0; }
+            //if ( pos.y > contentHeight) { yvel *= -0.1; pos.y = contentHeight; }
+            
+            scrollLayer.position = pos;
+            
+        }
+	}
+	else
+	{
+		yvel = ( scrollLayer.position.y - lasty ) / 2;
+		lasty = scrollLayer.position.y;
+	}
 }
 
 - (void) closeAction: (id)sender
@@ -95,34 +352,6 @@
     [delegate setScreenToggle:INTRO];
     
     [delegate replaceTheScene];
-}
-
--(void) drawRect:(CGPoint)fPoint toPoint:(CGPoint)tPoint width:(int)width color:(ccColor4B)bc
-{
-    glLineWidth(width);
-    ccDrawColor4B(bc.r, bc.g, bc.b, bc.a);
-    ccDrawRect(fPoint, tPoint);
-}
-
-//touch detection here
--(void)table:(SWTableView *)table cellTouched:(SWTableViewCell *)cell
-{
-    NSLog(@"Cell touched at index %d",cell.idx);
-    
-    [[SimpleAudioEngine sharedEngine] playEffect:@"click2.caf"];
-
-    //cellTouched = cell;
-    
-    CCLabelBMFont *label = (CCLabelBMFont*)[cell getChildByTag:123];
-    
-    label.color = ccc3(170, 170, 170);
-    
-    AppController *delegate  = (AppController*) [[UIApplication sharedApplication] delegate];
-
-    //[delegate setSelectedCounty:label.string];
-
-    [self schedule:@selector(buttonPressed:) interval:0.1];
-    
 }
 
 - (void) buttonPressed: (id) sender
@@ -145,29 +374,13 @@
     [delegate replaceTheScene];
     
 }
-    
-     
--(void) draw
-{
-    /*
-    CGSize size = CC_SIZE_POINTS_TO_PIXELS(myTable.boundingBox.size);
-    ccColor4B col = ccc4(0, 0, 0, 255);
-    CGPoint origin = CC_POINT_POINTS_TO_PIXELS(myTable.boundingBox.origin);
-    [self drawRect:origin toPoint:ccpAdd(origin, ccp(size.width, size.height)) width:2 color:col];
-     */
-}
 
 - (void)dealloc {
 	
 	NSLog(@"releasing CountyNode elements");
 	
     [self unscheduleAllSelectors];
-    
-    [exampleTable release];
-
-    myTable.delegate = nil;
-    [self removeChild:myTable];
-    
+        
     [self removeAllChildrenWithCleanup:YES];
     
     [[CCDirector sharedDirector] purgeCachedData];
