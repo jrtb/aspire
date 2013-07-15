@@ -10,7 +10,9 @@
 
 #import "AppDelegate.h"
 #import "IntroLayer.h"
-#import "CountyScene.h"
+#import "iphoneMenuScene.h"
+#import "iphoneCountyScene.h"
+#import "iphoneSocialScene.h"
 #import "SimpleAudioEngine.h"
 
 #import "iphoneIntroNode.h"
@@ -76,10 +78,13 @@
                 [[CCDirector sharedDirector] replaceScene: [iphoneIntroNode scene]];
                 break;
             case MENU:
-                //[[CCDirector sharedDirector] replaceScene: [iphoneMenuScene scene]];
+                [[CCDirector sharedDirector] replaceScene: [iphoneMenuScene scene]];
                 break;
             case COUNTY:
-                [[CCDirector sharedDirector] replaceScene: [CountyScene scene]];
+                [[CCDirector sharedDirector] replaceScene: [iphoneCountyScene scene]];
+                break;
+            case SOCIAL:
+                [[CCDirector sharedDirector] replaceScene: [iphoneSocialScene scene]];
                 break;
         }
 

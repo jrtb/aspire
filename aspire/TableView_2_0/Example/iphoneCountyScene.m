@@ -1,5 +1,5 @@
 //
-//  CountyScene.m
+//  iphoneCountyScene.m
 //
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,16 +25,16 @@
 
 //http://www.cocos2d-iphone.org/forums/topic/table-view/page/6/
 
-#import "CountyScene.h"
+#import "iphoneCountyScene.h"
 #import "SimpleAudioEngine.h"
 #import "AppDelegate.h"
 
-@implementation CountyScene
+@implementation iphoneCountyScene
 
 +(id) scene
 {
     CCScene *scene = [CCScene node];
-	CountyScene *layer = [CountyScene node];
+	iphoneCountyScene *layer = [iphoneCountyScene node];
 	[scene addChild: layer];
 	return scene;
 }
@@ -46,8 +46,15 @@
         
         printf("county scene loading\n");
         
+        items = [[NSMutableArray alloc] init];
+
         CGSize size = [[CCDirector sharedDirector] winSize];
         
+        iphoneAddY = 0;
+        
+        if (IS_IPHONE5)
+            iphoneAddY = 44.0;
+
         CCSprite *mainBack = [CCSprite spriteWithFile:@"county_menu_bg.pvr.gz"];
         mainBack.anchorPoint = ccp(0.5,1.0);
         mainBack.position = ccp(size.width*.5,size.height);
@@ -58,6 +65,16 @@
         mainBack2.position = ccp(size.width*.5,size.height);
         [self addChild:mainBack2 z:0];
 
+        CCSprite *bottom = [CCSprite spriteWithFile:@"bottom_bar.pvr.gz"];
+        bottom.anchorPoint = ccp(0.5,0.5);
+        bottom.position = ccp(size.width*.5,bottom.contentSize.height*.5);
+        [self addChild:bottom z:2];
+        
+        CCLabelBMFont *labelBottom = [CCLabelBMFont labelWithString:@"ASPIRE - County Selection" fntFile:@"bottom-menu-14.fnt"];
+        labelBottom.anchorPoint = ccp(0.5,0.5);
+        labelBottom.position = bottom.position;
+        [self addChild:labelBottom z:3];
+        
         // set up the scrolling layer
         isDragging = NO;
         lasty = 0.0f;
@@ -70,7 +87,7 @@
         
         // create buttons
         
-        float scrollTop = 272;
+        float scrollTop = 336+iphoneAddY*2;
         
         for (int i=0; i < 29; i++) {
         
@@ -176,6 +193,7 @@
             label.position = buttonBack.position;
             label.tag = i;
             [scrollLayer addChild:label];
+            [items addObject:label];
 
         }
         
@@ -200,10 +218,33 @@
     return self;
 }
 
+- (void) processTouch: (CGPoint)point
+{
+    //AppController *delegate  = (AppController*) [[UIApplication sharedApplication] delegate];
+    
+    //printf("touched!\n");
+    
+    //CGSize screenSize = [CCDirector sharedDirector].winSize;
+    
+    
+}
+
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
 {
     dragged = NO;
     isDragging = YES;
+    
+    for (UITouch *touch in touches){
+		
+		CGPoint point = [touch locationInView: [touch view]];
+		point = [[CCDirector sharedDirector] convertToGL: point];
+		
+        point = ccp(point.x,point.y);
+        
+        //printf("touch location: %f\n", point.y);
+        
+	}
+
     return;
 }
 
@@ -255,6 +296,53 @@
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
 {
+    for (UITouch *touch in touches){
+		
+		CGPoint point = [touch locationInView: [touch view]];
+		point = [[CCDirector sharedDirector] convertToGL: point];
+		
+        point = ccp(point.x,point.y);
+        
+        float scrollTop = 336.0+iphoneAddY*2;
+        float touchInScroll = (point.y - scrollTop) * -1;
+        
+        //printf("end touch location: %f\n", touchInScroll);
+
+        //printf("scrollLayer location: %f\n",scrollLayer.position.y);
+        
+        float touchWithScroll = touchInScroll+scrollLayer.position.y;
+        
+        //printf("touchWithScroll: %f\n", touchWithScroll);
+        
+        float indexTouched = touchWithScroll / 45.0;
+        
+        //printf("indexTouched: %f\n",indexTouched);
+        
+        
+        if (!dragged) {
+
+            int index = floor(indexTouched);
+            
+            if (index >= 0) {
+            
+                [[SimpleAudioEngine sharedEngine] playEffect:@"click2.caf"];
+                
+                //printf("index: %i\n",index);
+                
+                touchedItem = index;
+                
+                CCLabelBMFont *label = [items objectAtIndex:index];
+                
+                label.color = ccc3(170, 170, 170);
+                
+                [self schedule:@selector(buttonPressed:) interval:0.2];
+                
+            }
+
+        }
+        
+	}
+
     isDragging = NO;
     
     CGPoint pos = scrollLayer.position;
@@ -349,7 +437,7 @@
     [[SimpleAudioEngine sharedEngine] playEffect:@"click2.caf"];
     //}
     
-    [delegate setScreenToggle:INTRO];
+    [delegate setScreenToggle:MENU];
     
     [delegate replaceTheScene];
 }
@@ -358,18 +446,13 @@
 {
     [self unschedule:@selector(buttonPressed:)];
 
-    //CCLabelBMFont *label = (CCLabelBMFont*)[cellTouched getChildByTag:123];
+    CCLabelBMFont *label = [items objectAtIndex:touchedItem];
     
-    //label.color = ccWHITE;
-    
-    //myTable.delegate = nil;
-    
-    //[cellTouched release];
-    //cellTouched = nil;
+    label.color = ccWHITE;
     
     AppController *delegate  = (AppController*) [[UIApplication sharedApplication] delegate];
 
-    [delegate setScreenToggle:INTRO];
+    [delegate setScreenToggle:MENU];
     
     [delegate replaceTheScene];
     
@@ -383,6 +466,16 @@
         
     [self removeAllChildrenWithCleanup:YES];
     
+    for (int i=0; i < [items count]; i++) {
+		id aPiece = [items objectAtIndex:i];
+		[aPiece stopAllActions];
+        [aPiece removeAllChildrenWithCleanup:YES];
+		[self removeChild:aPiece cleanup:YES];
+	}
+	[items removeAllObjects];
+	[items release];
+	items = nil;
+
     [[CCDirector sharedDirector] purgeCachedData];
     
     [CCSpriteFrameCache purgeSharedSpriteFrameCache];

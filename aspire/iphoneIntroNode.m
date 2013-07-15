@@ -103,7 +103,7 @@
 	[self unschedule: @selector(start2:)];
     
     AppController *delegate  = (AppController*) [[UIApplication sharedApplication] delegate];
-    [delegate setScreenToggle:COUNTY];
+    [delegate setScreenToggle:MENU];
     
     [delegate replaceTheScene];
 

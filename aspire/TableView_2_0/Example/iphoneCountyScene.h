@@ -1,5 +1,5 @@
 //
-//  CountyScene.h
+//  iphoneCountyScene.h
 //
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -25,7 +25,7 @@
 
 #import "cocos2d.h"
 
-@interface CountyScene : CCLayer
+@interface iphoneCountyScene : CCLayer
 {
     CCLayer                     *scrollLayer;
 	BOOL                        isDragging;
@@ -33,6 +33,11 @@
 	float                       yvel;
 	int                         contentHeight;
     BOOL                        dragged;
+
+    NSMutableArray              *items;
+    int                         touchedItem;
+    
+    float                       iphoneAddY;
 
 }
 
