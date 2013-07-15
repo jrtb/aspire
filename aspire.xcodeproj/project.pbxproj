@@ -1346,6 +1346,47 @@
 			};
 			name = Release;
 		};
+		E79DC2FE179487E800147AB5 /* Archive */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Fairlady Media, Inc. (3H6GLPJ48J)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					NDEBUG,
+					"NS_BLOCK_ASSERTIONS=1",
+				);
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "7E4C385D-CA8C-4E16-BB59-9F8975061E32";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Archive;
+		};
+		E79DC2FF179487E800147AB5 /* Archive */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				COPY_PHASE_STRIP = YES;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = aspire/Prefix.pch;
+				HEADER_SEARCH_PATHS = "\"aspire/libs/kazmath/include\"";
+				INFOPLIST_FILE = aspire/Resources/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_LDFLAGS = (
+					"-lz",
+					"-lsqlite3",
+					"-ObjC",
+				);
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				VALIDATE_PRODUCT = YES;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Archive;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -1354,6 +1395,7 @@
 			buildConfigurations = (
 				E71EF59B177C71A700877FF4 /* Debug */,
 				E71EF59C177C71A700877FF4 /* Release */,
+				E79DC2FE179487E800147AB5 /* Archive */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -1363,6 +1405,7 @@
 			buildConfigurations = (
 				E71EF59E177C71A700877FF4 /* Debug */,
 				E71EF59F177C71A700877FF4 /* Release */,
+				E79DC2FF179487E800147AB5 /* Archive */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
