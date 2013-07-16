@@ -38,6 +38,8 @@
 		
         printf("social scene loading\n");
         
+        wrapperOpen = NO;
+        
         isTouchable = NO;
         
         iphoneAddY = 0;
@@ -57,7 +59,7 @@
         bottom.position = ccp(size.width*.5,bottom.contentSize.height*.5);
         [self addChild:bottom z:2];
         
-        CCLabelBMFont *labelBottom = [CCLabelBMFont labelWithString:@"ASPIRE - Social Media" fntFile:@"bottom-menu-14.fnt"];
+        labelBottom = [CCLabelBMFont labelWithString:@"ASPIRE - Social Media" fntFile:@"bottom-menu-14.fnt"];
         labelBottom.anchorPoint = ccp(0.5,0.5);
         labelBottom.position = bottom.position;
         [self addChild:labelBottom z:3];
@@ -71,7 +73,7 @@
                                                                 selector:@selector(twitterAction:)];
         
         CCMenu  *menuTwitter = [CCMenu menuWithItems:itemTwitter, nil];
-        [menuTwitter setPosition:ccp(320-85.0,304.0+iphoneAddY)];
+        [menuTwitter setPosition:ccp(320-85.0,304.0+iphoneAddY*2)];
         [self addChild:menuTwitter z:2];
 
         CCSprite *fbSmall = [CCSprite spriteWithFile:@"facebook.pvr.gz"];
@@ -83,7 +85,7 @@
                                                                       selector:@selector(fbAction:)];
         
         CCMenu  *menuFB = [CCMenu menuWithItems:itemFB, nil];
-        [menuFB setPosition:ccp(85.0,304.0+iphoneAddY)];
+        [menuFB setPosition:ccp(85.0,304.0+iphoneAddY*2)];
         [self addChild:menuFB z:2];
 
         CCSprite *webSmall = [CCSprite spriteWithFile:@"web.pvr.gz"];
@@ -95,7 +97,7 @@
                                                                  selector:@selector(webAction:)];
         
         CCMenu  *menuWeb = [CCMenu menuWithItems:itemWeb, nil];
-        [menuWeb setPosition:ccp(160.0,122.0+iphoneAddY)];
+        [menuWeb setPosition:ccp(160.0,122.0+iphoneAddY*2)];
         [self addChild:menuWeb z:2];
 
         CCSprite *aSmall = [CCSprite spriteWithFile:@"home_button.pvr.gz"];
@@ -117,17 +119,29 @@
 
 - (void) closeAction: (id)sender
 {
-    //myTable.delegate = nil;
     
     AppController *delegate  = (AppController*) [[UIApplication sharedApplication] delegate];
     
     //if (![appDelegate muted]) {
     [[SimpleAudioEngine sharedEngine] playEffect:@"click2.caf"];
     //}
+
+    if (wrapperOpen) {
+        
+        [self removeChild:webViewWrapper];
+        webViewWrapper = nil;
+        
+        wrapperOpen = NO;
+        
+        labelBottom.string = @"ASPIRE - Social Media";
+        
+    } else {
     
-    [delegate setScreenToggle:MENU];
-    
-    [delegate replaceTheScene];
+        [delegate setScreenToggle:MENU];
+        
+        [delegate replaceTheScene];
+        
+    }
 }
 
 - (void) twitterAction: (id)sender
@@ -138,11 +152,21 @@
     [[SimpleAudioEngine sharedEngine] playEffect:@"click2.caf"];
     //}
         
-    //AppController *delegate  = (AppController*) [[UIApplication sharedApplication] delegate];
+    labelBottom.string = @"ASPIRE - Twitter";
     
-    //[delegate setScreenToggle:INTRO];
+    wrapperOpen = YES;
     
-    //[delegate replaceTheScene];
+    CGSize size = [CCDirector sharedDirector].winSize;
+    
+    CGRect frame = CGRectMake(0, 64, size.width, size.height-64-24);
+    webView = [[UIWebView alloc] initWithFrame:frame];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://twitter.com/aspirencstate"]]];
+    
+    // put a wrappar around the slider
+	webViewWrapper = [CCUIViewWrapper wrapperForUIView:webView];
+	[self addChild:webViewWrapper];
+    
+    [webView release];
     
 }
 
@@ -160,6 +184,36 @@
     
     //[delegate replaceTheScene];
     
+    /*
+    // create slider programatically
+    CGRect frame = CGRectMake(20, 240, 280, 20);
+    slider= [[UISlider alloc] initWithFrame:frame];
+    slider.minimumValue=0;
+    slider.maximumValue=100;
+    slider.continuous=YES;
+    [slider addTarget:self action:@selector(sliderMoved) forControlEvents:UIControlEventValueChanged];
+    
+	// put a wrappar around the slider
+	sliderWrapper = [CCUIViewWrapper wrapperForUIView:slider];
+	[self addChild:sliderWrapper];
+     */
+    
+    labelBottom.string = @"ASPIRE - Facebook";
+
+    wrapperOpen = YES;
+    
+    CGSize size = [CCDirector sharedDirector].winSize;
+
+    CGRect frame = CGRectMake(0, 64, size.width, size.height-64-24);
+    webView = [[UIWebView alloc] initWithFrame:frame];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://www.facebook.com/pages/ACT-Supplemental-Preparation-in-Rural-Education/436155226481887?fref=ts"]]];
+    
+    // put a wrappar around the slider
+	webViewWrapper = [CCUIViewWrapper wrapperForUIView:webView];
+	[self addChild:webViewWrapper];
+
+    [webView release];
+
 }
 
 - (void) webAction: (id)sender
@@ -170,12 +224,22 @@
     [[SimpleAudioEngine sharedEngine] playEffect:@"click2.caf"];
     //}
     
-    //AppController *delegate  = (AppController*) [[UIApplication sharedApplication] delegate];
+    labelBottom.string = @"ASPIRE - Web";
     
-    //[delegate setScreenToggle:INTRO];
+    wrapperOpen = YES;
     
-    //[delegate replaceTheScene];
+    CGSize size = [CCDirector sharedDirector].winSize;
     
+    CGRect frame = CGRectMake(0, 64, size.width, size.height-64-24);
+    webView = [[UIWebView alloc] initWithFrame:frame];
+    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://harvest.cals.ncsu.edu/aspire/"]]];
+    
+    // put a wrappar around the slider
+	webViewWrapper = [CCUIViewWrapper wrapperForUIView:webView];
+	[self addChild:webViewWrapper];
+    
+    [webView release];
+
 }
 
 -(void) onEnterTransitionDidFinish

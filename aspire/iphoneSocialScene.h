@@ -9,6 +9,7 @@
 // When you import this file, you import all the cocos2d classes
 #import "cocos2d.h"
 #import "SimpleAudioEngine.h"
+#import "CCUIViewWrapper.h"
 
 // HelloWorldLayer
 @interface iphoneSocialScene : CCLayer
@@ -20,6 +21,12 @@
     
     float                       iphoneAddY;
     
+    CCUIViewWrapper             *webViewWrapper;
+    UIWebView                   *webView;
+    
+    BOOL                        wrapperOpen;
+
+    CCLabelBMFont               *labelBottom;
 }
 
 // returns a CCScene that contains the HelloWorldLayer as the only child

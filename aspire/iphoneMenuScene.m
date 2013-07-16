@@ -54,7 +54,14 @@
         mainBack.position = ccp(size.width*.5,size.height);
         [self addChild:mainBack z:2];
 
-        float menuStartY = 300.5;
+        if (IS_IPHONE5) {
+            CCSprite *calsNew = [CCSprite spriteWithFile:@"cals_new.pvr.gz"];
+            calsNew.anchorPoint = ccp(1.0,0.0);
+            calsNew.position = ccp(size.width,12);
+            [self addChild:calsNew z:2];
+        }
+        
+        float menuStartY = 300.5+iphoneAddY*2;
         float sepY = 38.0;
         
         CCMenuItemSprite *itemA = [CCMenuItemSprite itemWithNormalSprite:[CCSprite spriteWithFile:@"main_menu_cellbg.pvr.gz"]
@@ -136,6 +143,8 @@
                                                           selectedSprite:[CCSprite spriteWithFile:@"main_menu_cellbg.pvr.gz"]
                                                                   target:self
                                                                 selector:@selector(fAction:)];
+        
+        itemF.opacity = 0;
         
         CCMenu  *menuF = [CCMenu menuWithItems:itemF, nil];
         [menuF setPosition:ccp(size.width*.5,menuStartY - sepY*5)];
